@@ -10,7 +10,7 @@ defmodule MonteCarlo do
 
   @default_n 1_000_000
 
-  @doc "NXを使わずに計算"
+  @doc "Nxを使わずに計算する"
   def calc_normal(n \\ @default_n) do
     total_points =
       1..n
@@ -20,6 +20,18 @@ defmodule MonteCarlo do
         if x * x + y * y < 1.0, do: 1, else: 0
       end)
       |> Enum.sum()
+    total_points * 4 / n
+  end
+
+  @doc "Nxを使って計算する"
+  def calc_nx(n \\ @default_n) do
+    x = Nx.random_uniform({n}, 0, 1, type: {:f, 32})
+    y = Nx.random_uniform({n}, 0, 1, type: {:f, 32})
+    total_points = 
+      Nx.add(Nx.multiply(x, x), Nx.multiply(y, y))
+      |> Nx.less(1.0)
+      |> Nx.sum()
+      |> Nx.to_number()
     total_points * 4 / n
   end
 end
