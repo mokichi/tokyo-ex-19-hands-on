@@ -1,21 +1,42 @@
 # ExDemo
 
-**TODO: Add description**
+tokyo.ex #19 hands-on
 
-## Installation
+https://github.com/ohr486/ElixirHandsOn20220529/wiki
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_demo` to your list of dependencies in `mix.exs`:
+## Run
 
-```elixir
-def deps do
-  [
-    {:ex_demo, "~> 0.1.0"}
-  ]
-end
+```
+$ mix run -e 'MonteCarlo.benchmark'
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/ex_demo>.
+## Benchmark sample
 
+```
+Operating System: macOS
+CPU Information: Intel(R) Core(TM) i5-8279U CPU @ 2.40GHz
+Number of Available Cores: 8
+Available memory: 16 GB
+Elixir 1.13.1
+Erlang 24.2
+
+Benchmark suite executing with the following configuration:
+warmup: 2 s
+time: 5 s
+memory time: 0 ns
+reduction time: 0 ns
+parallel: 1
+inputs: none specified
+Estimated total run time: 14 s
+
+Benchmarking calc_normal ...
+Benchmarking calc_nx ...
+
+Name                  ips        average  deviation         median         99th %
+calc_normal          3.41         0.29 s     ±8.24%         0.29 s         0.37 s
+calc_nx              0.27         3.71 s     ±1.21%         3.71 s         3.74 s
+
+Comparison: 
+calc_normal          3.41
+calc_nx              0.27 - 12.66x slower +3.42 s
+```

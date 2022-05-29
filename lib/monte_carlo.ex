@@ -34,4 +34,11 @@ defmodule MonteCarlo do
       |> Nx.to_number()
     total_points * 4 / n
   end
+
+  def benchmark(n \\ @default_n) do
+    Benchee.run(%{
+      "calc_normal" => fn -> calc_normal(n) end,
+      "calc_nx" => fn -> calc_nx(n) end
+    })
+  end
 end
